@@ -1,0 +1,16 @@
+# Handle line endings automatically for files detected as text
+# and leave all files detected as binary untouched.
+* text=auto
+
+#
+# The above will handle all files NOT found below
+#
+# These files are text and should be normalized (Convert crlf => lf)
+*.*
+# Always use LF for bash files
+*.sh text eol=lf
+*.fish text eol=lf
+*.zsh text eol=lf
+
+secrets.yaml diff=sopsdiffer
+secrets.*.yaml diff=sopsdiffer
