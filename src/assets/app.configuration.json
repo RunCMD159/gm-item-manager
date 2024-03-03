@@ -1,0 +1,10 @@
+{
+  "weapon": {
+    "form": "assets/weapon-form.configuration.json",
+    "output": "assets/weapon-output.mapping.json"
+  },
+  "armor": {
+    "form":"assets/armor-form.configuration.json",
+    "output": "assets/armor-output.mapping.json"
+  }
+}
