@@ -1,1 +1,5 @@
-<p>item-form works!</p>
+@if (formConfiguration$|async; as formConfiguration) {
+  <app-form-builder [configuration]="formConfiguration"></app-form-builder>
+} @else {
+  No configuration found
+}

@@ -1,3 +1,256 @@
 {
-  "foo": "bar"
+  "item_key": {
+    "type": "string",
+    "component": "input",
+    "required": true,
+    "placeholder": "rapier_frozen_nail_name"
+  },
+  "item_level": {
+    "type": "number",
+    "component": "input",
+    "min": 1,
+    "max": 100,
+    "required": true
+  },
+  "genus": "m",
+  "value": {
+    "type": "number",
+    "component": "input",
+    "min": 1,
+    "max": 100,
+    "required": true
+  },
+  "loot_chance": {
+    "type": "number",
+    "component": "input",
+    "min": 0,
+    "max": 100,
+    "default": 10,
+    "required": true
+  },
+  "lang_name": {
+    "type": "string",
+    "component": "input",
+    "required": true,
+    "placeholder": "rapier_frozen_nail_name"
+  },
+  "lang_desc": {
+    "type": "string",
+    "component": "input",
+    "required": true,
+    "placeholder": "rapier_frozen_nail_desc"
+  },
+  "weapon_type": {
+    "type": "string",
+    "component": "select",
+    "required": true,
+    "options": [
+      "rapier",
+      "sword",
+      "axe",
+      "bow"
+    ]
+  },
+  "requirements": {
+    "VIT": {
+      "type": "number",
+      "component": "input",
+      "min": 0,
+      "max": 100,
+      "required": true
+    },
+    "END": {
+      "type": "number",
+      "component": "input",
+      "min": 0,
+      "max": 100,
+      "default": 10,
+      "required": true
+    },
+    "MAG": {
+      "type": "number",
+      "component": "input",
+      "min": 0,
+      "max": 100,
+      "default": 10,
+      "required": true
+    },
+    "STR": {
+      "type": "number",
+      "component": "input",
+      "min": 0,
+      "max": 100,
+      "default": 10,
+      "required": true
+    },
+    "DEX": {
+      "type": "number",
+      "component": "input",
+      "min": 0,
+      "max": 100,
+      "default": 10,
+      "required": true
+    },
+    "INT": {
+      "type": "number",
+      "component": "input",
+      "min": 0,
+      "max": 100,
+      "default": 10,
+      "required": true
+    },
+    "LCK": {
+      "type": "number",
+      "component": "input",
+      "min": 0,
+      "max": 100,
+      "default": 10,
+      "required": true
+    }
+  },
+  "damage_scaling": {
+    "STR": {
+      "type": "number",
+      "component": "input",
+      "min": 0,
+      "max": 100,
+      "default": 10,
+      "required": true
+    },
+    "DEX": {
+      "type": "number",
+      "component": "input",
+      "min": 0,
+      "max": 100,
+      "default": 10,
+      "required": true
+    },
+    "INT": {
+      "type": "number",
+      "component": "input",
+      "min": 0,
+      "max": 100,
+      "default": 10,
+      "required": true
+    },
+    "LCK": {
+      "type": "number",
+      "component": "input",
+      "min": 0,
+      "max": 100,
+      "default": 10,
+      "required": true
+    }
+  },
+  "is_unique": {
+    "type": "boolean",
+    "default": true
+  },
+  "poise_ratio": {
+    "type": "number",
+    "component": "input",
+    "min": 0,
+    "max": 100,
+    "default": 10,
+    "required": true
+  },
+  "prefix_chance": {
+    "type": "number",
+    "component": "input",
+    "min": 0,
+    "max": 100,
+    "default": 10,
+    "required": true
+  },
+  "suffix_chance": {
+    "type": "number",
+    "component": "input",
+    "min": 0,
+    "max": 100,
+    "default": 10,
+    "required": true
+  },
+  "asset_icon": {
+    "type": "string",
+    "component": "input",
+    "required": true,
+    "placeholder": "spr_weapon_rapier_frozen_nail_icon"
+  },
+  "animations": {
+    "idle": {
+      "type": "string",
+      "component": "input",
+      "required": true,
+      "placeholder": "spr_weapon_rapier_frozen_nail_idle"
+    },
+    "move": {
+      "type": "string",
+      "component": "input",
+      "required": true,
+      "placeholder": "spr_weapon_rapier_frozen_nail_move"
+    },
+    "attack": {
+      "type": "string",
+      "component": "input",
+      "required": true,
+      "placeholder": "spr_weapon_rapier_frozen_nail_attack"
+    }
+  },
+  "attack": {
+    "skill_key": {
+      "type": "string",
+      "component": "input",
+      "required": true,
+      "placeholder": "skill_melee_rapier"
+    },
+    "skill_override": {
+      "skill_properties_damage": {
+        "damage_physical": 5,
+        "damage_ice": 15
+      },
+      "skill_properties": {
+        "asset_attack_fx": "spr_weapon_rapier_frozen_nail_fx"
+      }
+    }
+  },
+  "skills": [
+    {
+      "skill_key": "skill_dodge"
+    },
+    {
+      "skill_key": "skill_summon_frozen_nails"
+    }
+  ],
+  "mods": [
+    {
+      "name": "add_freeze_chance",
+      "values": {
+        "freeze_chance": {
+          "from": 0.10,
+          "to": 0.25
+        }
+      }
+    },
+    {
+      "name": "add_status_duration_freeze",
+      "values": {
+        "from": 2,
+        "to": 2
+      }
+    },
+    {
+      "name": "add_damage_buff_after_status_inflict_chance",
+      "values": {
+        "status_key": "effect_freeze",
+        "chance": {
+          "from": 1,
+          "to": 1
+        },
+        "damage": {
+          "damage_ice": 5
+        },
+        "duration_seconds": 3
+      }
+    }
+  ]
 }
