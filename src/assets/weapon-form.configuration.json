@@ -12,7 +12,14 @@
     "max": 100,
     "required": true
   },
-  "genus": "m",
+  "genus": {
+    "type": "string",
+    "component": "select",
+    "required": true,
+    "options": [
+      "m"
+    ]
+  },
   "value": {
     "type": "number",
     "component": "input",
@@ -205,11 +212,24 @@
     },
     "skill_override": {
       "skill_properties_damage": {
-        "damage_physical": 5,
-        "damage_ice": 15
+        "damage_physical": {
+          "type": "number",
+          "component": "input",
+          "required": false
+        },
+        "damage_ice": {
+          "type": "number",
+          "component": "input",
+          "required": false
+        }
       },
       "skill_properties": {
-        "asset_attack_fx": "spr_weapon_rapier_frozen_nail_fx"
+        "asset_attack_fx": {
+          "type": "string",
+          "component": "input",
+          "required": true,
+          "defaultValue": "spr_weapon_rapier_frozen_nail_fx"
+        }
       }
     }
   },

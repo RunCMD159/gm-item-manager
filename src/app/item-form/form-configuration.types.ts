@@ -1,5 +1,5 @@
 export type FormConfiguration =  {
-  [key: string]: TextInput | NumberInput | Select | [TextInput | NumberInput | Select]
+  [key: string]: TextInput | NumberInput | Select | FormConfiguration | [TextInput | NumberInput | Select]
 }
 
 export type TextInput = {
