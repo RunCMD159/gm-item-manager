@@ -1,0 +1,20 @@
+<app-file-loader (fileContent)="whenFileContentLoaded($event)"></app-file-loader>
+@if (fileContent) {
+  <button mat-button (click)="togglePreview()">Preview</button>
+  <button mat-button (click)="downloadJson()">Download</button>
+}
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" [opened]="this.showPreview">
+    <h1>Preview</h1>
+    <pre>{{ preview|async|json }}</pre>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div>
+      @if (fileContent) {
+        <app-json-editor [data]="fileContent" (dataChanged)="whenDataChanged($event)"></app-json-editor>
+      }
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>
+
+

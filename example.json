@@ -1,0 +1,87 @@
+{
+  "item_key": "rapier_frozen_nail",
+  "item_level": "15",
+  "genus": "m",
+  "value": "600",
+  "loot_chance": "0.050",
+  "lang_name": "rapier_frozen_nail_name",
+  "lang_desc": "rapier_frozen_nail_desc",
+  "weapon_type": "rapier",
+  "requirements": {
+    "VIT": 0,
+    "END": 0,
+    "MAG": 0,
+    "STR": 3,
+    "DEX": 22,
+    "INT": 7,
+    "LCK": 0
+  },
+  "damage_scaling": {
+    "STR": 0,
+    "DEX": 0.1,
+    "INT": 0.1,
+    "LCK": 0
+  },
+  "is_unique": true,
+  "poise_ratio": 0,
+  "prefix_chance": "0",
+  "suffix_chance": "0",
+  "asset_icon": "spr_weapon_rapier_frozen_nail_icon",
+  "animations": {
+    "idle": "spr_weapon_rapier_frozen_nail_idle",
+    "move": "spr_weapon_rapier_frozen_nail_move",
+    "attack": "spr_weapon_rapier_frozen_nail_attack"
+  },
+  "attack": {
+    "skill_key": "skill_melee_rapier",
+    "skill_override": {
+      "skill_properties_damage": {
+        "damage_physical": 5,
+        "damage_ice": 15
+      },
+      "skill_properties": {
+        "asset_attack_fx": "spr_weapon_rapier_frozen_nail_fx"
+      }
+    }
+  },
+  "skills": [
+    {
+      "skill_key": "skill_dodge"
+    },
+    {
+      "skill_key": "skill_summon_frozen_nails"
+    }
+  ],
+  "mods": [
+    {
+      "name": "add_freeze_chance",
+      "values": {
+        "freeze_chance": {
+          "from": 0.10,
+          "to": 0.25
+        }
+      }
+    },
+    {
+      "name": "add_status_duration_freeze",
+      "values": {
+        "from": 2,
+        "to": 2
+      }
+    },
+    {
+      "name": "add_damage_buff_after_status_inflict_chance",
+      "values": {
+        "status_key": "effect_freeze",
+        "chance": {
+          "from": 1,
+          "to": 1
+        },
+        "damage": {
+          "damage_ice": 5
+        },
+        "duration_seconds": 3
+      }
+    }
+  ]
+}
