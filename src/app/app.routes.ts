@@ -1,5 +1,6 @@
 import {Route, Routes} from '@angular/router';
 import {AppConfig} from "./app.config.type";
+import {ConfiguratorComponent} from "./configurator/configurator.component";
 
 export function createRoutesFromConfig(appConfig: AppConfig): Routes {
   if (!appConfig) {
@@ -20,4 +21,7 @@ export function createRoutesFromConfig(appConfig: AppConfig): Routes {
   })
 }
 
-export const routes: Routes = [];
+export const routes: Routes = [{
+  path: '',
+  component: ConfiguratorComponent
+}];

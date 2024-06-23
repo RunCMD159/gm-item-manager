@@ -235,7 +235,12 @@
   },
   "skills": [
     {
-      "skill_key": "skill_dodge"
+      "skill_key": {
+        "type": "string",
+        "component": "input",
+        "required": true,
+        "defaultValue": "skill_dodge"
+      }
     },
     {
       "skill_key": "skill_summon_frozen_nails"
