@@ -1,42 +1,57 @@
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {FileLoaderComponent} from './file-loader/file-loader.component';
-import {TextInputConfigItem} from './models/controls/text-input-config-item.model';
-import {ArrayConfigItem} from './models/groups/array-config-item.model';
 import {GroupConfigItem} from './models/groups/group-config-item.model';
+import {ConfigExtractorService} from './config-extractor.service';
+import {AsyncPipe, JsonPipe} from '@angular/common';
+import {MatDrawer, MatDrawerContainer, MatDrawerContent} from '@angular/material/sidenav';
+import {BehaviorSubject} from 'rxjs';
+import {IS_GROUP} from './type-utils';
+import {IsGroupPipe} from './pipes/groups/is-group.pipe';
+import {AsGroupPipe} from './pipes/groups/as-group.pipe';
+import {IsArrayPipe} from './pipes/array/is-array.pipe';
+import {AsArrayPipe} from './pipes/array/as-array.pipe';
+import {AsControlPipe} from './pipes/control/as-control.pipe';
 
 @Component({
   selector: 'app-configurator',
   standalone: true,
   imports: [
-    FileLoaderComponent
+    FileLoaderComponent,
+    JsonPipe,
+    MatDrawerContent,
+    MatDrawerContainer,
+    AsyncPipe,
+    MatDrawer,
+    IsGroupPipe,
+    AsGroupPipe,
+    IsArrayPipe,
+    AsArrayPipe,
+    AsControlPipe
   ],
   templateUrl: './configurator.component.html',
   styleUrl: './configurator.component.scss'
 })
 export class ConfiguratorComponent {
 
+  private configExtractorService = inject(ConfigExtractorService);
+  model = new GroupConfigItem('', []);
+  private previewSubject = new BehaviorSubject({});
+  preview$ = this.previewSubject.asObservable();
+  showPreview = false;
+
   whenContentLoaded(content: string) {
     const input = JSON.parse(content);
-    const result = this.extractConfig(input);
+    const result = this.configExtractorService.extractConfig(input);
+    this.model = new GroupConfigItem('', result);
     const test = {};
     result.forEach(x => Object.assign(test, x.toOutput()));
-    console.log(test);
+    this.previewSubject.next(test);
   }
 
-  private extractConfig(input: any) {
-    return Object.keys(input).map(key => {
-      const value = input[key];
-      if (Array.isArray(value)) {
-        const children: any = this.extractConfig(input[key]);
-        const array: any = new ArrayConfigItem(key, children);
-        return array;
-      }
-      if (typeof value === 'object' && !Array.isArray(value) && value !== null) {
-        const children = this.extractConfig(input[key]);
-        const group: any = new GroupConfigItem(key, children);
-        return group;
-      }
-      return new TextInputConfigItem(key, value);
-    });
+
+  togglePreview() {
+    this.showPreview = !this.showPreview;
   }
+
+  protected readonly IS_GROUP = IS_GROUP;
 }

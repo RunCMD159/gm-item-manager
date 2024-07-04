@@ -1,1 +1,33 @@
 <app-file-loader (fileContent)="whenContentLoaded($event)"></app-file-loader>
+<button (click)="togglePreview()">Preview</button>
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" [opened]="this.showPreview">
+    <h1>Preview</h1>
+    <pre>{{ preview$|async|json }}</pre>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div>
+      <h1>root</h1>
+      @for (child of model.children(); track child) {
+        @if (child | isGroup) {
+          @if (child |asGroup; as groupItem) {
+            <h1>{{ groupItem.key() }}</h1>
+          }
+        } @else if (child | isArray) {
+          @if (child |asArray; as arrayItem) {
+            <h1>{{ arrayItem.key() }}</h1>
+          }
+        } @else {
+          @if (child | asControl; as controlItem) {
+            <div>
+              <input id="key" name="key" [value]="controlItem.key()">
+              <input id="value" name="value" [value]="controlItem.value()">
+            </div>
+          }
+        }
+      }
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>
+
+

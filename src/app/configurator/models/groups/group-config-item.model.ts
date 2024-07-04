@@ -6,15 +6,18 @@ export class GroupConfigItem extends StructureConfigItem {
     super();
   }
 
-  get key(): string {
+  key(): string {
     return this._key;
   }
 
-  get children(): (StructureConfigItem | ControlConfigItem)[] {
+  children(): (StructureConfigItem | ControlConfigItem)[] {
     return this._children;
   }
 
+
+
+
   toOutput(): {} {
-    return {[this.key]:this.children.map(child =>child.toOutput())};
+    return {[this.key()]: this.children().map(child => child.toOutput())};
   }
 }
