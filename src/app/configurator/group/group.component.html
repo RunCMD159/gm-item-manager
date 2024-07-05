@@ -1,0 +1,18 @@
+<div class="container">
+  <h1>{{ item.key() }}</h1>
+  @for (child of item.children(); track child) {
+    @if (child | isGroup) {
+      @if (child |asGroup; as groupItem) {
+        <app-group [item]="groupItem"></app-group>
+      }
+    } @else if (child | isArray) {
+      @if (child |asArray; as arrayItem) {
+        <app-array [item]="arrayItem"></app-array>
+      }
+    } @else {
+      @if (child | asControl; as controlItem) {
+        <app-control [item]="controlItem"></app-control>
+      }
+    }
+  }
+</div>

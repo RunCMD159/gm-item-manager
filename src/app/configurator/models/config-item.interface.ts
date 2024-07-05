@@ -1,3 +1,7 @@
+import {AbstractControl} from '@angular/forms';
+
 export interface ConfigItem {
-  toOutput(): {}
+  toOutput(): {};
+
+  getControl(): AbstractControl;
 }
