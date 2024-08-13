@@ -1,5 +1,5 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {JsonEditorOptions, NgJsonEditorModule} from 'ang-jsoneditor';
+import {Component, EventEmitter, Input, Output, ViewChild} from '@angular/core';
+import {JsonEditorOptions, NgJsonEditorModule,JsonEditorComponent as EditorComponent} from 'ang-jsoneditor';
 import {HttpClient} from '@angular/common/http';
 
 @Component({
@@ -16,10 +16,16 @@ export class JsonEditorComponent {
   @Input() data!: any;
   @Output() dataChanged = new EventEmitter<string>();
 
-  constructor(private http: HttpClient) {
+  // @ts-ignore
+  @ViewChild('editor', {static: true}) editor: EditorComponent;
+
+  constructor() {
     this.editorOptions = new JsonEditorOptions();
     this.editorOptions.modes = ['code', 'text', 'tree', 'view']; // set all allowed modes
-    //this.options.mode = 'code'; //set only one mode
+  }
+
+  changeMode(mode: 'code' | 'text' | 'tree' | 'view') {
+    this.editor.setMode(mode)
   }
 
   whenJsonChange(data: string) {

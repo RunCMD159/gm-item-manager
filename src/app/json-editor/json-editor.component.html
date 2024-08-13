@@ -1,1 +1,7 @@
-<json-editor [options]="editorOptions" [data]="data" (change)="whenJsonChange($event)"></json-editor>
+<div>
+  <button (click)="changeMode('tree')">Tree</button>
+  <button (click)="changeMode('code')">Code</button>
+  <button (click)="changeMode('text')">Text</button>
+  <button (click)="changeMode('view')">View</button>
+</div>
+<json-editor #editor [options]="editorOptions" [data]="data" (change)="whenJsonChange($event)"></json-editor>
