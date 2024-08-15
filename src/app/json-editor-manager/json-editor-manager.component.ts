@@ -35,7 +35,6 @@ export class JsonEditorManagerComponent {
     if (fileContent) {
       try {
         this.fileContent = JSON.parse(fileContent);
-        this.previewSubject.next(this.fileContent);
       } catch {
         console.error('Invalid JSON..repairing...');
         try {
@@ -45,6 +44,7 @@ export class JsonEditorManagerComponent {
           throw new Error('Invalid JSON in file content');
         }
       }
+      this.previewSubject.next(this.fileContent);
     }
   }
 
