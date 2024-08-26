@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "build-docs": "ng build --output-path docs --base-href /gm-item-manager/"
+    "build-docs": "ng build --output-path docs --base-href /gm-item-manager/ && node prepare-gh-pages-files.js"
   },
   "private": true,
   "dependencies": {
