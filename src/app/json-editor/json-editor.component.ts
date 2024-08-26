@@ -22,6 +22,9 @@ export class JsonEditorComponent {
   constructor() {
     this.editorOptions = new JsonEditorOptions();
     this.editorOptions.modes = ['code', 'text', 'tree', 'view']; // set all allowed modes
+    this.editorOptions.mainMenuBar = true;
+    this.editorOptions.navigationBar = true;
+    this.editorOptions.statusBar = true;
   }
 
   changeMode(mode: 'code' | 'text' | 'tree' | 'view') {
